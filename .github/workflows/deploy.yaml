@@ -39,3 +39,8 @@ jobs:
       - name: Apply Terraform Deployment
         run: terraform apply -auto-approve tfplan
         working-directory: ./terraform_vpc
+
+      - name: Destroy Terraform Deployment (Optional)
+        # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: terraform destroy -auto-approve
+        working-directory: ./terraform_vpc
